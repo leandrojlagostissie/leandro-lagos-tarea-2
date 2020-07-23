@@ -7,8 +7,8 @@ Crear un proyecto en React que maneje el estado con redux saga y que muestre un 
 
 # AMBIENTE
 
-Node v10.x
-React v16.x
+* Node v10.x
+* React v16.x
 
 
 # INSTALACION
@@ -36,7 +36,8 @@ Ejecutar comando
 
 La App correrá en el puerto 3006 (se habilitó el cors en la comunicación con el backend)
 
-
 La app desplegará la lista de usuarios cargados en la tarea 1
+
 La app permite Crear o Modificar usuarios. validando la data y que no se repitan
+
 La data de usuarios se manejan en un store de Redux (src/redux-store) y las solicitudes al backend parten en los middlewares de la modificacion del state
