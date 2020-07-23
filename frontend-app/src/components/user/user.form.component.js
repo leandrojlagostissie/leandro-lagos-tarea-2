@@ -15,7 +15,7 @@ export const UserForm = (props) => {
 
     useEffect(() => {        
         props.changeForm({
-            isValid: !!(userName && email && validator.validate(email)),
+            isValid: validateForm(),
             user: {
                 ...(props.user || {}),
                 ...({
@@ -37,6 +37,9 @@ export const UserForm = (props) => {
         setEmail(refEmail.current.value)
     }
 
+    const validateForm = () => {
+        return !!(userName && email && validator.validate(email))
+    }
 
     return (
         <form onSubmit={submitForm} onChange={handleChangeForm}>

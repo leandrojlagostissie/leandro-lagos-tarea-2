@@ -1,6 +1,6 @@
 import { createStore, applyMiddleware } from 'redux';
 import { getAllUsers, addUser, updateUser } from '../services/user.services'
-
+import { toast } from 'react-toastify';
 
 export const FIRSTLOAD = 'FIRSTLOAD';
 export const ADD = 'ADD';
@@ -9,18 +9,24 @@ export const UPDATE = 'UPDATE';
 
 const usersMiddleware = (store) => (next) => async (action) => {
 
-    switch (action.type) {
-        case ADD:
-            action.payLoad = await addUser(action.payLoad)
-            break;
-        case UPDATE:
-            action.payLoad = await updateUser(action.payLoad)
-            break;
-        case FIRSTLOAD:
-            break;
+    try {
+        switch (action.type) {
+            case ADD:
+                action.payLoad = await addUser(action.payLoad)
+                break;
+            case UPDATE:
+                action.payLoad = await updateUser(action.payLoad)
+                break;
+            case FIRSTLOAD:
+                break;
+        }
+    
+        debugger
+        next(action);
+        
+    } catch (error) {
+        toast.error(error.toString());
     }
-
-    next(action);
 }
 
 const usersReducer = (state = [], action) => {

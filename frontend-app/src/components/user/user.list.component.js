@@ -3,7 +3,8 @@ import React, { useState } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import { UserForm } from './user.form.component'
 import { connect } from 'react-redux'
-import { ADD, UPDATE } from '../../redux-store/users';
+import { ADD, UPDATE } from '../../redux-store';
+import { toast } from 'react-toastify';
 
 const UserList = ({ users, add, update }) => {
     
@@ -32,7 +33,7 @@ const UserList = ({ users, add, update }) => {
             userModal.isValid && setShowModal(false) 
 
             if (!userModal.isValid) {
-                
+                toast.error('Datos incorrectos !! ')
             }
         } else {
             setShowModal(false)

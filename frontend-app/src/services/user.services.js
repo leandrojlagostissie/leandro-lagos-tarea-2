@@ -1,17 +1,6 @@
-// import client from './graphql';
+import client from './graphql';
 import { gql } from '@apollo/client';
-import { ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
 
-
-const link = createHttpLink({
-    uri: 'http://localhost:3000/graphql/users',
-    credentials: 'same-origin'
-})
-
-const client = new ApolloClient({
-    link,
-    cache: new InMemoryCache(),
-});
 
 export const getAllUsers = async () => {
     return client.query({
@@ -46,12 +35,7 @@ export const addUser = async ({ userName, email }) => {
         variables: {
             userName, email
         }
-    }).then(res => {
-        debugger
-        return res.data.addUser
-    }).catch(err => {
-        console.error(err)
-    })
+    }).then(res => res.data.addUser)
 }
 export const updateUser = async ({ id, userName, email }) => {
     return client.mutate({
@@ -67,10 +51,5 @@ export const updateUser = async ({ id, userName, email }) => {
         variables: {
             id, userName, email
         }
-    }).then(res => {
-        debugger
-        return res.data.updateUser
-    }).catch(err => {
-        console.error(err)
-    })
+    }).then(res => res.data.updateUser)
 }
