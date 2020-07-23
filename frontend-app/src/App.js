@@ -9,13 +9,14 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
 function App() {
+
   return (
-
     <>
-
     <ToastContainer />    
     <Provider store={store}>
-      <div className="container">
+      <div className="container" style={{
+        margin: '5rem'
+      }} >
           <div className="row">
             <UserList />
           </div>

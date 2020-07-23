@@ -14,11 +14,7 @@ export const getAllUsers = async () => {
                 }
             `,
             variables: null
-    }).then(res => {
-        return res.data.getAllUsers
-    }).catch(err => {
-        console.error(err)
-    })
+    }).then(res => res.data.getAllUsers)
 }
 
 export const addUser = async ({ userName, email }) => {

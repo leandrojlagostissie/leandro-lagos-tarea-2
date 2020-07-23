@@ -25,6 +25,7 @@ const usersMiddleware = (store) => (next) => async (action) => {
         next(action);
         
     } catch (error) {
+        debugger
         toast.error(error.toString());
     }
 }
@@ -58,12 +59,15 @@ const store = createStore(usersReducer, applyMiddleware(usersMiddleware));
 // })
 
 
-
-
 getAllUsers().then(res => {
     store.dispatch({
         type: FIRSTLOAD,
         payLoad: res
+    });
+}).catch(err => {
+    store.dispatch({
+        type: FIRSTLOAD,
+        payLoad: []
     });
 })
 
