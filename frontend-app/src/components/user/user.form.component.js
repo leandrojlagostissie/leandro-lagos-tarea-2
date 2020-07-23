@@ -1,17 +1,21 @@
 
 import React, { useState, useRef, useEffect } from 'react';
+import validator from 'email-validator';
+
+
 
 export const UserForm = (props) => {
     const [userName, setUserName] = useState('');
     const [email, setEmail] = useState('');
 
+    
     const refUserName = useRef();
     const refEmail = useRef();
 
 
     useEffect(() => {        
         props.changeForm({
-            isValid: true,
+            isValid: !!(userName && email && validator.validate(email)),
             user: {
                 ...(props.user || {}),
                 ...({
