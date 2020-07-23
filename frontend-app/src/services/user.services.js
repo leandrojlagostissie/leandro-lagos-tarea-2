@@ -20,7 +20,7 @@ export const getAllUsers = async () => {
 export const addUser = async ({ userName, email }) => {
     return client.mutate({
         mutation: gql`
-            mutation addUser($userName: String, $email: String) {
+            mutation addUser($userName: String!, $email: String!) {
                 addUser(userName: $userName, email: $email) {
                     id
                     userName
@@ -36,7 +36,7 @@ export const addUser = async ({ userName, email }) => {
 export const updateUser = async ({ id, userName, email }) => {
     return client.mutate({
         mutation: gql`
-            mutation updateUser($id: Int, $userName: String, $email: String) {
+            mutation updateUser($id: Int!, $userName: String!, $email: String!) {
                 updateUser(id: $id, userName: $userName, email: $email) {
                     id
                     userName
